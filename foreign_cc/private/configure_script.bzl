@@ -69,7 +69,7 @@ def create_configure_script(
         ).lstrip())
 
     script.append("##mkdirs## $$BUILD_TMPDIR$$/$$INSTALL_PREFIX$$")
-    script.append("{env_vars} {prefix}\"{configure}\" {prefix_flag}$$BUILD_TMPDIR$$/$$INSTALL_PREFIX$$ {user_options}".format(
+    script.append("{env_vars} {prefix}\"{configure}\" {user_options} {prefix_flag}$$BUILD_TMPDIR$$/$$INSTALL_PREFIX$$".format(
         env_vars = get_make_env_vars(workspace_name, tools, flags, env_vars, deps, inputs),
         prefix = configure_prefix,
         configure = configure_path,

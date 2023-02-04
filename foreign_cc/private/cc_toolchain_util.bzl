@@ -201,7 +201,7 @@ def get_tools_info(ctx):
         ),
         cpp = cc_common.get_tool_for_action(
             feature_configuration = feature_configuration,
-            action_name = ACTION_NAMES.PREPROCESS_ASSEMBLE_ACTION_NAME,
+            action_name = ACTION_NAMES.preprocess_assemble,
         ),
         cxx = cc_common.get_tool_for_action(
             feature_configuration = feature_configuration,

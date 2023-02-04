@@ -18,6 +18,7 @@ CxxToolsInfo = provider(
     doc = "Paths to the C/C++ tools, taken from the toolchain",
     fields = dict(
         cc = "C compiler",
+        cpp = "C preprocessor",
         cxx = "C++ compiler",
         cxx_linker_static = "C++ linker to link static library",
         cxx_linker_executable = "C++ linker to link executable",

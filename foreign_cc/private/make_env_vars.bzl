@@ -116,7 +116,7 @@ def _get_make_variables(workspace_name, tools, flags, user_env_vars):
         # This is very fragile as the toolchain may have the C preprocessor
         # named to something different than just "cpp"...
         if tool == "CPP":
-            tool_cc = getattr(tools, "CC")
+            tool_cc = getattr(tools, "cc")
             tool_value_absolute = _absolutize(workspace_name, tool_cc, True)
 
             # replace gcc by cpp ...

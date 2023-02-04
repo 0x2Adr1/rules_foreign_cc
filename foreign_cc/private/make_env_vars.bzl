@@ -110,6 +110,25 @@ def _get_make_variables(workspace_name, tools, flags, user_env_vars):
 
     tools_dict = {}
     for tool in _MAKE_TOOLS:
+        # Horrible hack alert: there is no action associated to the C preprocessor so
+        # we cannot retrieve it through normal means (cc_common.get_tool_for_action)
+        # so we just get the path to CC and replace the filename by "cpp".
+        # This is very fragile as the toolchain may have the C preprocessor
+        # named to something different than just "cpp"...
+        if tool == "CPP":
+            tool_cc = getattr(tools, "CC")
+            tool_value_absolute = _absolutize(workspace_name, tool_cc, True)
+
+            # replace gcc by cpp ...
+            i = tool_value_absolute.rfind("/")
+            if i == -1:
+                tool_value_absolute = "cpp"
+            else:
+                tool_value_absolute = tool_value_absolute[:i+1] + "cpp"
+
+            tools_dict[tool] = [tool_value_absolute]
+            continue
+
         tool_value = getattr(tools, _MAKE_TOOLS[tool])
         if tool_value:
             # Force absolutize of tool paths, which may relative to the exec root (e.g. hermetic toolchains built from source)

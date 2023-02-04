@@ -18,7 +18,6 @@ CxxToolsInfo = provider(
     doc = "Paths to the C/C++ tools, taken from the toolchain",
     fields = dict(
         cc = "C compiler",
-        cpp = "C preprocessor",
         cxx = "C++ compiler",
         cxx_linker_static = "C++ linker to link static library",
         cxx_linker_executable = "C++ linker to link executable",
@@ -198,10 +197,6 @@ def get_tools_info(ctx):
         cc = cc_common.get_tool_for_action(
             feature_configuration = feature_configuration,
             action_name = ACTION_NAMES.c_compile,
-        ),
-        cpp = cc_common.get_tool_for_action(
-            feature_configuration = feature_configuration,
-            action_name = ACTION_NAMES.preprocess_assemble,
         ),
         cxx = cc_common.get_tool_for_action(
             feature_configuration = feature_configuration,

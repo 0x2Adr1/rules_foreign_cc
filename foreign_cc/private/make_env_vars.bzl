@@ -89,6 +89,7 @@ _MAKE_FLAGS = {
 _MAKE_TOOLS = {
     "AR": "cxx_linker_static",
     "CC": "cc",
+    "CPP": "cpp",
     "CXX": "cxx",
     # missing: cxx_linker_executable
 }
